@@ -8,8 +8,8 @@ import "swiper/css";
 import "swiper/css/pagination";
 import IconSection from "./IconSection";
 
-const myslider=[{text:'MEN',link:'src/images/bannermen.png'},
-  {text:'WOMEN',link:'src/images/bannerwomen.png'}]
+const myslider=[{text:'MEN',link:'./images/bannermen.png'},
+  {text:'WOMEN',link:'./images/bannerwomen.png'}]
 
 export default function Hero() {
   const theme = useTheme();
@@ -118,7 +118,7 @@ export default function Hero() {
 
         <Box sx={{ display: { xs: "none", md: "block", minWidth: "26.6%" } }}>
           <Box sx={{ position: "relative" }}>
-            <img  width={"100%"} src="src/images/bannershoes.png" />
+            <img  width={"100%"} src="./images/bannershoes.png" />
             <Stack
               sx={{
                 position: "absolute",
@@ -174,9 +174,9 @@ export default function Hero() {
               </Link>
             </Stack>
           </Box>
-
+          
           <Box sx={{ position: "relative"}}>
-            <img  width={"100%"}  src="src/images/bannerelec.png" alt="" />
+            <img  width={"100%"}  src="./images/bannerelec.png" alt="" />
             <Stack
               sx={{
                 position: "absolute",

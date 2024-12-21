@@ -21,7 +21,6 @@ import { useGetproductByNameQuery } from '../../redux/product';
 export default function Main() {
  
     const theme=useTheme();
-    const [selectedProduct, setSelectedProduct] = useState(null);
     const handleAlignment = (event,newValue) => {
       if (newValue !== null) {
         setmyDate(newValue);
@@ -31,14 +30,12 @@ export default function Main() {
     const [open, setOpen] = useState(false);
    
 
-  const handleClickOpen = (product) => {
-    setSelectedProduct(product); 
+  const handleClickOpen = () => {
     setOpen(true);
   };
 
   const handleClose = () => {
     setOpen(false);
-    setSelectedProduct(null);
   };
 
 
@@ -53,7 +50,8 @@ export default function Main() {
 
 
   const { data, error, isLoading } = useGetproductByNameQuery(myDate);
- 
+  const [clickedProduct,setclickedProduct]= useState({});
+
 
 if (isLoading) {
   return (
@@ -81,6 +79,10 @@ if (error) {
     </Container>
   );
 }
+
+
+
+
 
 
 if(data){
@@ -184,7 +186,10 @@ if(data){
       
       <CardActions sx={{justifyContent:'space-between'}}>
         <Button  sx={{textTransform:'capitalize'}}size="large"
-        onClick={() => handleClickOpen(item)}>
+        onClick={() => {handleClickOpen()
+          setclickedProduct(item)
+          
+        }}>
             <AddShoppingCartOutlinedIcon sx={{mr:1}}/>add to cart
          </Button>
          <Rating name="read-only" precision={0.5} value={item.productRating} readOnly />
@@ -219,9 +224,11 @@ if(data){
 
 
 
-          {selectedProduct && <ProductDetails product={selectedProduct}  />}
+          <ProductDetails 
+// @ts-ignore
+          clickedProduct={clickedProduct}  />
 
-          {/* <ProductDetails /> */}
+          
       </Dialog>
         
 
